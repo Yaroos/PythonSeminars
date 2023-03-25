@@ -1,4 +1,4 @@
-'''
+'''print() / - 0 {}
 Задача 6: Вы пользуетесь общественным транспортом? Вероятно, вы расплачивались за проезд
 и получали билет с номером. Счастливым билетом называют такой билет с шестизначным номером,
 где сумма первых трех цифр равна сумме последних трех.
@@ -6,23 +6,22 @@
 Вам требуется написать программу, которая проверяет счастливость билета.
     Пример:
     385916 -> yes
-    123456 -> no
+    123456 -> no # так почему то не работает: 
 '''
-number = input("Введите шестизначный номер билета: ")
+Number = int(input("Введите шестизначное число: "))
+SumLeft, SumRight = 0, 0
 
-resultLeft = 0
-resultRight = 0
-
-for i in range(3):
-    resultLeft += int(number[i])
-    resultRight += int(number[i+3])
-
-number = int(number)
-print("Вы ввели число: ", number)
-
-print("Сумма цифр справа: ", resultLeft, "Сумма цифр слева: ", resultRight)
-
-if resultLeft == resultRight:
+a = int(Number / 1000 % 10)
+b = int(Number / 10000 % 10)
+c = int(Number / 100000 % 10)
+SumLeft = a + b + c
+print(f'С левой стороны {SumLeft}')
+d = int(Number % 10)
+e = int(Number / 10 % 10)
+f = int(Number / 100 % 10)
+SumRight = d + e + f
+print(f'С правой стороны {SumRight}')
+if (SumLeft == SumRight):
     print("Билет счастливый")
 else:
-    print("Этот билет не счастливый")
+    print("Этот билет обычный")
